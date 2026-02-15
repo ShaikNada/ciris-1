@@ -16,28 +16,28 @@ const CrimeTrendChart: React.FC = () => {
           <AreaChart data={mockCrimeTrends} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="colorTheft" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="hsl(217, 91%, 60%)" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="hsl(217, 91%, 60%)" stopOpacity={0}/>
+                <stop offset="5%" stopColor="hsl(217, 91%, 60%)" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="hsl(217, 91%, 60%)" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="colorAssault" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="hsl(0, 84%, 60%)" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="hsl(0, 84%, 60%)" stopOpacity={0}/>
+                <stop offset="5%" stopColor="hsl(0, 84%, 60%)" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="hsl(0, 84%, 60%)" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="colorFraud" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="hsl(38, 92%, 50%)" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="hsl(38, 92%, 50%)" stopOpacity={0}/>
+                <stop offset="5%" stopColor="hsl(38, 92%, 50%)" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="hsl(38, 92%, 50%)" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="colorVandalism" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="hsl(142, 76%, 36%)" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="hsl(142, 76%, 36%)" stopOpacity={0}/>
+                <stop offset="5%" stopColor="hsl(142, 76%, 36%)" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="hsl(142, 76%, 36%)" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(217, 33%, 20%)" />
             <XAxis dataKey="month" stroke="hsl(215, 20%, 65%)" fontSize={12} />
             <YAxis stroke="hsl(215, 20%, 65%)" fontSize={12} />
-            <Tooltip 
-              contentStyle={{ 
-                backgroundColor: 'hsl(222, 47%, 14%)', 
+            <Tooltip
+              contentStyle={{
+                backgroundColor: 'hsl(222, 47%, 14%)',
                 border: '1px solid hsl(217, 33%, 20%)',
                 borderRadius: '8px'
               }}

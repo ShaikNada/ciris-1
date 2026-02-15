@@ -12,9 +12,18 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { mockAlerts } from '@/data/mockData';
+import { useAuth } from '@/context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const unreadAlerts = mockAlerts.filter(a => !a.isRead).length;
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <header className="h-16 bg-card border-b border-border px-6 flex items-center justify-between gap-4">
@@ -55,10 +64,9 @@ const Header: React.FC = () => {
             {mockAlerts.slice(0, 3).map((alert) => (
               <DropdownMenuItem key={alert.id} className="flex flex-col items-start gap-1 p-3">
                 <div className="flex items-center gap-2">
-                  <span className={`w-2 h-2 rounded-full ${
-                    alert.type === 'danger' ? 'bg-destructive' : 
-                    alert.type === 'warning' ? 'bg-warning' : 'bg-info'
-                  }`} />
+                  <span className={`w-2 h-2 rounded-full ${alert.type === 'danger' ? 'bg-destructive' :
+                      alert.type === 'warning' ? 'bg-warning' : 'bg-info'
+                    }`} />
                   <span className="font-medium text-sm">{alert.title}</span>
                 </div>
                 <span className="text-xs text-muted-foreground">{alert.message}</span>
@@ -75,8 +83,8 @@ const Header: React.FC = () => {
                 <User className="w-4 h-4 text-primary-foreground" />
               </div>
               <div className="text-left hidden sm:block">
-                <p className="text-sm font-medium">Admin User</p>
-                <p className="text-xs text-muted-foreground">System Admin</p>
+                <p className="text-sm font-medium">{user?.name || 'Admin User'}</p>
+                <p className="text-xs text-muted-foreground">{user?.email || 'System Admin'}</p>
               </div>
             </Button>
           </DropdownMenuTrigger>
@@ -86,7 +94,7 @@ const Header: React.FC = () => {
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-destructive">
+            <DropdownMenuItem className="text-destructive" onClick={handleLogout}>
               <LogOut className="w-4 h-4 mr-2" />
               Logout
             </DropdownMenuItem>
