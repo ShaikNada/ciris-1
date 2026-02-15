@@ -81,6 +81,22 @@ const Dashboard: React.FC = () => {
         <RegionalChart />
       </div>
 
+      {/* Crime Map */}
+      <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold">Geospatial Crime Analysis</h3>
+          <span className="text-xs text-muted-foreground bg-secondary px-2 py-1 rounded-full">Interactive Map</span>
+        </div>
+        <div className="w-[800px] h-[500px] rounded-lg overflow-hidden border border-border/50">
+          <iframe
+            src="/crime_map.html"
+            className="w-full h-full border-0"
+            title="Telangana Crime Map"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
       {/* Bottom Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <RecentCases />
